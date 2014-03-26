@@ -1,0 +1,42 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title><%= title %></title>
+	<link rel="stylesheet" href="/stylesheets/bootstrap.css" />
+	<style>
+		.hero-unit{
+			background-color: #fafafa;
+			padding:10px 80px 340px 80px;
+			margin-top:-20px;
+		}
+		footer{
+			text-align: center;
+			margin-top: 30px;
+		}
+		.navbar-inverse{
+			border-radius:0;
+		}
+	</style>
+</head>
+<body>
+<div class="navbar navbar-inverse">
+    <div class="container">
+    	<div class="navbar-header">
+        	<a class="navbar-brand hidden-sm" href="/">iVey微博</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          	<ul class="nav navbar-nav">
+	        	<li><a href="/">首页</a></li>
+	        	<% if(!user) {%>
+	            	<li><a href="/login">登录</a></li>
+	            	<li><a href="/reg">注册</a></li>
+	            <% } else {%>
+	            	<li><a href="/logout">注销</a></li>
+	            	<li><a href="/explore">找人</a></li>
+	            <% } %>
+          </ul>
+        </div>
+    </div>
+</div>

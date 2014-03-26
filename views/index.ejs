@@ -1,0 +1,18 @@
+<% include header %>
+
+<% if(success) {%>
+	<div class="alert alert-success alert-dismissable" style="padding-left:80px">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  		<%= success %>
+	</div>
+<% } %>
+<div class="hero-unit">
+	<h1>欢迎来到 iVey 微博</h1>
+	<p>iVey 是一个基于 Node.js 的微博系统。<p>
+	<p>	
+		<a href="/login" class="btn btn-primary btn-large">登录</a>
+		<a href="/reg" class="btn btn-large">立即注册</a>
+	</p>
+</div>
+
+<% include footer %>

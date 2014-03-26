@@ -1,0 +1,111 @@
+<% include header %>
+
+<style type="text/css">
+	
+	.user_wrap{
+		margin-top: 30px;
+		width: 360px;
+		height: 150px;
+		float: left;
+	}
+	.user_wrap img{
+		float: left;
+	}
+	.user_info{
+		float: left;
+		width: 100px;
+		margin-left: 15px;
+		text-align: center;
+	}
+	.user_name{
+		width: 80px;
+		display: block;
+		margin-top: 15px;
+		font-size: 18px;
+		font-weight: bold;
+		color:#666;
+		text-align: center;
+	}
+	.attention{
+		width: 80px;
+		text-align: center;
+		display: block;
+		background-color: #333;
+		color: #999;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		margin-top: 10px;
+		border-radius: 2px;
+	}
+	.attention:hover{
+		text-decoration: none;
+		color:#fff;
+		background-color: #080808;
+	}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<!-- 按照是否关注排序 -->
+			<% allUser.sort(function(a,b){
+				if(a.attention && !b.attention) {
+					return -1;
+				} else {
+					return 1;
+				}
+			}) %>
+			<% for(var i=0;i<allUser.length;i++) {%>
+			<div class="user_wrap">
+				<img src="http://hdn.xnimg.cn/photos/hdn521/20121108/1615/h_main_Ij4M_5aaa000097791376.jpg"
+				 width=80 height=80/>
+				 <div class="user_info">
+				 	<span class="user_name"><%= allUser[i].name %></span>
+				 	<% if(allUser[i].attention) {%>
+				 	<a class="attention"  style="color:#fff" href="javascript:;" data-href="http://127.0.0.1:3000/attention/<%=allUser[i].email%>">已关注</a>
+				 	<%} else {%>
+				 	<a class="attention" href="javascript:;" data-href="http://127.0.0.1:3000/attention/<%=allUser[i].email%>">关注</a>
+				 	<% }%>
+				 </div>
+			</div>
+			<%}%>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+</div>
+
+<% include footer %>
+<script type="text/javascript">
+	$('.attention').on("click",function() {
+		var url = $(this).attr('data-href');
+		$that = $(this);
+		if($(this).html()==="关注") {
+			$.ajax({
+				async:false,
+				url:url,
+				dataType:'json',
+				type:'post',
+				success:function(json) {
+					if(json.status) {
+						$that.html("已关注").css({"color":"#fff"});
+					}
+				}
+			});
+		} else {
+			url = url.replace("attention","disAttention");
+			$.ajax({
+				async:false,
+				url:url,
+				dataType:'json',
+				type:'post',
+				success:function(json) {
+					if(json.status) {
+						$that.html("关注").css({"color":"#999"});
+					}
+				}
+			});
+		}	
+		console.log(url);
+		return false;
+	});
+</script>

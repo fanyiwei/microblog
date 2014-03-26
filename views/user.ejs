@@ -1,0 +1,70 @@
+<% include header %>
+<link rel="stylesheet" href="/stylesheets/user.css" />
+<form method="post" action="../mAdd" id="addMblog">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<textarea class="form-control" id="mAddContent" name="mAddContent" rows="3" placeholder="有什么新鲜事想告诉大家"></textarea>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<p></P>
+				<button type="submit" class="btn btn-primary pull-right" id="submitBtn">发布</button>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+</form>
+
+<% for(var i=0;i<posts.length;i++) { %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-8">
+			<br />
+			<br />
+			<div class="wb_wrap" data-wbid="<%= posts[i].id %>">
+				<div class="wb">
+					<a href="<%= posts[i].user %>"><%= posts[i].name %></a>
+					<span class="wb_time">
+						<% var date = new Date(posts[i].time);
+					   var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+
+					   " "+date.getHours()+":"+date.getMinutes();
+					 	%>
+						<%=dateStr %>
+					</span>
+					<% if(posts[i].del) {%>
+						<a class="wb_del" href="javascript:;">删除</a>
+					<% } %>
+						<a class="commentBtn" href="javascript:;">评论</a>
+					<p class="wb_content">
+						<%= posts[i].post %>
+					</p>
+				</div>
+				<div class="reply_wrap" style="display:none">
+					<form class="commentFrom">
+						<textarea class="commentText form-control" placeholder="说两句"></textarea>
+						<div class="comment_btn_wrap">
+							<button type="button" class="commentCancel btn btn-sm">取消</button>&nbsp;&nbsp;
+							<button type="button" class="commentSubmit btn btn-success btn-sm">提交</button>
+						</div>
+					</form>
+				</div>
+				
+
+			</div>
+		</div>
+		<div class="col-md-3"></div>
+	</div>
+</div>
+
+<% } %>
+<% include footer %>
+<script type="text/javascript" src="/javascripts/jquery.animate-colors-min.js"></script>
+<script type="text/javascript" src="/javascripts/user.js"></script>
+	

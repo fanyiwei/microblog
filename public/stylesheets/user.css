@@ -1,0 +1,83 @@
+.wb_wrap{
+		
+}
+.wb_wrap a{
+	font-size: 16px;
+	line-height: 16px;
+	color:#111;	
+}
+.wb_wrap a:hover{
+	color:#49976b;
+	text-decoration: none;
+}
+.wb_time{
+	font-size: 11px;
+	color: #bbb;
+	margin-left: 10px;
+}
+.wb_content{
+	color: #666;
+	margin-top: 10px;
+	padding-bottom: 15px;
+}
+a.wb_del,a.commentBtn{
+	font-size: 11px;
+	color:#666;
+	margin-left: 15px;
+	display: none;
+}
+a.wb_del:hover,a.commentBtn:hover{
+	color: #333;
+	text-decoration: underline;
+}
+.commentFrom{
+	position: relative;
+}
+.commentText{
+	width: 718px;
+	height: 60px;
+	display: block;
+}
+.comment_btn_wrap{
+	margin-top:15px;
+	float: right;
+	/* position: absolute;
+	right: 7px;
+	top: 50px; */
+	
+}
+.reply_wrap{
+	background-color: #f5f5f5;
+	border-radius: 3px;
+	padding:15px;
+	padding-bottom: 57px;
+}
+.reply{
+	border-bottom: 1px solid #eee;
+	margin-top: 10px;
+}
+.reply_name{
+	font-size: 14px;
+	color:#666;
+}
+.reply_time {
+	font-size: 10px;
+	color: #bbb;
+	margin-left: 10px;
+}
+a.reply_del{
+	font-size: 10px;
+	color:#666;
+	margin-left: 15px;
+	display: none;
+}
+a.reply_del:hover{
+	color: #555;
+	text-decoration: underline;
+}
+.replay_content{
+	font-size: 12px;
+	color:#888;
+	margin-top: 10px;
+	padding-bottom: 10px;
+}

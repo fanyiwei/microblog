@@ -1,0 +1,16 @@
+<% for(var i=0;i<comments.length;i++) { %>
+
+	<% var date = new Date(comments[i].time);
+   		var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate()+" "+date.getHours()+":"+date.getMinutes();
+ 	%>
+	<div class="reply" data-commentId="<%=comments[i]._id%>">
+		<span calss="reply_name"><%=comments[i].userName%></span>
+		<span class="reply_time"><%=dateStr%></span>
+		<% if(comments[i].del) {%>
+		<a class="reply_del" href="javascript:;">删除</a>
+		<% } %>
+		<p class="replay_content">
+			<%=comments[i].content%>
+		</p>
+	</div>
+<% } %>
